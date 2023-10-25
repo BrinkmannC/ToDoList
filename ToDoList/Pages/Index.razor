@@ -1,0 +1,48 @@
+﻿@page "/"
+@using Microsoft.AspNetCore.Components.Forms;
+<PageTitle>Index</PageTitle>
+
+<h1 class="indexH1">My ToDoList📒🖊️</h1>
+
+<p>If you want to add something to your ToDoList, feel free to type it into the text field🥸</p>
+<div>
+    <input type="text" id="myTitle" name="title" @bind-value="@Title" placeholder="Title..."/>
+</div>
+<br />
+<div>
+    <input type="text" id="myDiscription" name="Discription" @bind-value="@Discription" placeholder="Discription..."/>
+</div>
+<br />
+<div>
+    <button @onclick="OnButtonClick">Eingabe Speichern</button>
+</div>
+<br />
+<div>
+    <input type="text" id="mySearch" placeholder="Search for Tasks..." @bind="searchTerm" onkeyup="@SearchOnKeyUp" />
+</div>
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Title</td>
+                <td>Distription</td>
+                <td>Completed?</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in filteredData)
+            {
+                <tr>
+                    <td>@item.Title</td>
+                    <td>@item.Discription</td>
+                    <td><input type="checkbox" id="CmpltdCheckbox" name="CompletedCheckbox" /></td>
+                </tr>
+            }
+        </tbody>
+    </table> 
+   
+    
+</div>
+
+
+<SurveyPrompt Title="How is Blazor working for you?" />
